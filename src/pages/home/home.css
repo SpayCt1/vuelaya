@@ -1,0 +1,201 @@
+/* Fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-page {
+  background-color: #f5f7fa;
+  color: #000;
+}
+
+/* ---------------- BANNER ---------------- */
+.banner {
+  height: 70vh;
+  background-image: url('../../assets/images/homebanner.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------- SEARCH CARD ---------------- */
+.search-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-card h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* ---------------- FORMULARIO ---------------- */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Campos con íconos */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.input-group svg {
+  color: #00bfa5;
+  margin-right: 0.5rem;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  width: 150px;
+}
+
+/* Botón buscar */
+.search-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 0.8rem 4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.search-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ---------------- DESTINOS ---------------- */
+.destinations {
+  padding: 4rem 3rem 2rem 3rem;
+  text-align: center;
+}
+
+.destinations h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00bfa5;
+}
+
+.cards-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.destination-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 360px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.destination-card h4 {
+  margin: 0.8rem 0 0.3rem 0;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+
+.destination-card p {
+  padding: 0 1rem 1rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ---------------- FOOTER ---------------- */
+footer {
+  background-color: #f8f8f8;
+  padding: 2rem 3rem;
+  text-align: center;
+  color: #555;
+}
+
+.footer-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.footer-links span {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-links span:hover {
+  color: #00bfa5;
+}
+
+/* ---------------- RESPONSIVO ---------------- */
+@media (max-width: 900px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-form input {
+    width: 100%;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}

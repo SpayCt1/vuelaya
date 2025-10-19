@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
+import Presentation from "./pages/presentation/presentation";
+import Login from "./pages/login/login";
+import Navbar from "./components/navbar";
+import Home from "./pages/home/home";
+import Destinos from "./pages/destinos/destinos";
+import Contacto from "./pages/contacto/contacto";
+import Cuenta from "./pages/cuenta/cuenta";
+
+function AppWrapper() {
+  const location = useLocation();
+
+  // Rutas donde NO queremos mostrar el navbar
+  const noNavbarRoutes = ["/", "/login", "/home"];
+
+  const showNavbar = !noNavbarRoutes.includes(location.pathname);
+
+  return (
+    <>
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Presentation />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/destinos" element={<Destinos />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/cuenta" element={<Cuenta />} />
+      </Routes>
+    </>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppWrapper />
+    </Router>
   );
 }
 

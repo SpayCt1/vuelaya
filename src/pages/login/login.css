@@ -1,0 +1,139 @@
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../assets/images/loginbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Capa de filtro con gradiente animado */
+.login-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(30, 30, 30, 0.8));
+  z-index: 1;
+}
+
+/* Partículas suaves flotando */
+.login-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  background-size: 400% 400%;
+  animation: floatParticles 10s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes floatParticles {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+
+/* Cuadro de login con efecto de vidrio */
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 380px;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+  color: #e0f7fa;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  /* 🔹 Alineación perfecta */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.25);
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #00e5ff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* 🔹 Centrado y proporción de los inputs */
+.login-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-card input {
+  width: 90%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #e0f7fa;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.login-card input:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+}
+
+/* Botón ajustado visualmente */
+.login-card button {
+  width: 90%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00e5ff, #00bfa5);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.login-card button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.toggle-link {
+  margin-top: 1.2rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  color: #80deea;
+  transition: color 0.3s ease;
+}
+
+.toggle-link:hover {
+  color: #00e5ff;
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ffd700;
+}

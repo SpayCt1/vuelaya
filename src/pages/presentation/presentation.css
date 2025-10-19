@@ -1,0 +1,52 @@
+.presentation-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../assets/images/presentationbg.webp'); /* ruta a tu imagen */
+  background-size: cover;       /* que la imagen cubra todo el contenedor */
+  background-position: center;  /* centrada */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+  position: relative;
+  color: white;
+}
+
+.presentation-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.presentation-content {
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* para que se vea sobre el fondo */
+}
+
+.presentation-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.presentation-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.presentation-content button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.presentation-content button:hover {
+  transform: scale(1.05);
+  background-color: #333;
+}
