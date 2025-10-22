@@ -1,0 +1,277 @@
+/* --- Fondo del modal --- */
+.modal-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6); /* 🌙 Oscurece el fondo sin desenfoque */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* --- Contenedor del modal --- */
+.modal-contenedor {
+  background-color: #ffffff;
+  padding: 45px 35px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 420px;
+  animation: aparecer 0.3s ease;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-contenedor h2 {
+  color: #00bfa5;
+  font-size: 1.9rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* --- Botones del modal --- */
+.modal-botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+  padding: 12px 35px;
+  border: none;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  background-color: #000000; /* 🖤 fondo negro elegante */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cancelar:hover,
+.btn-confirmar:hover {
+  transform: translateY(-2px) scale(1.05);
+  background-color: #222222; /* tono más claro al pasar el ratón */
+}
+
+/* Diferenciar ligeramente el botón cancelar */
+.btn-cancelar {
+  opacity: 0.85;
+}
+
+.btn-cancelar:hover {
+  opacity: 1;
+}
+
+/* --- Evitar scroll horizontal global --- */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 🚫 Desactiva el desplazamiento horizontal en toda la página */
+  box-sizing: border-box;
+}
+
+/* variable de color principal */
+:root {
+  --primary: #00bfa5;
+  --primary-dark: #008e76;
+}
+
+/* --- Contenedor principal --- */
+.cuenta-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+  font-family: "Poppins", sans-serif;
+  overflow: hidden; /* Evita desbordes del contenedor */
+}
+
+/* --- Panel izquierdo --- */
+.cuenta-izquierda {
+  width: 40%;
+  background-color: #f5f9ff;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* centra la foto y título */
+  border-right: 2px solid #e0e0e0;
+}
+
+/* Foto de perfil encima del título */
+.foto-perfil-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--primary);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.foto-perfil:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Título grande en el panel izquierdo */
+.cuenta-titulo {
+  color: var(--primary); /* color principal */
+  font-size: 2.5rem;
+  margin: 10px 0 30px 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Info del usuario (izquierda) */
+.cuenta-info {
+  color: var(--primary-dark);
+  font-size: 1.25rem;
+  margin-bottom: 50px;
+  line-height: 1.8;
+  width: 100%;
+  max-width: 360px;
+}
+
+.cuenta-info p {
+  margin: 8px 0;
+  color: var(--primary-dark);
+}
+
+/* boton cerrar sesion */
+.cerrar-sesion {
+  background-color:black;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  align-self: center;
+}
+
+.cerrar-sesion:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.03);
+}
+
+/* --- Panel derecho --- */
+.cuenta-derecha {
+  width: 60%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden; /* solo scroll vertical */
+  padding: 0;
+  position: relative;
+}
+
+/* Scroll estético para panel derecho */
+.cuenta-derecha::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cuenta-derecha::-webkit-scrollbar-thumb {
+  background-color: #90caf9;
+  border-radius: 10px;
+}
+
+/* --- Título fijo (sticky) del historial --- */
+.historial-header {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  padding: 30px 0 10px 0;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* color del titulo historial con primary */
+.historial-titulo {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+/* --- Lista del historial --- */
+.historial-lista {
+  list-style: none;
+  padding: 40px 60px;
+  margin: 0;
+}
+
+.historial-item {
+  background-color: #f1f8ff;
+  margin-bottom: 20px;
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.historial-item:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.02);
+}
+
+.historial-item p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.historial-item span {
+  display: block;
+  text-align: right;
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+/* --- Asegurar que no aparezca scroll horizontal accidental --- */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* --- Responsive básico (móviles) --- */
+@media (max-width: 900px) {
+  .cuenta-container { flex-direction: column; height: auto; }
+  .cuenta-izquierda, .cuenta-derecha { width: 100%; }
+  .cuenta-izquierda { padding: 30px; border-right: none; border-bottom: 2px solid #eaeaea; }
+  .cuenta-derecha { padding: 20px 16px; height: 60vh; }
+  .historial-lista { padding: 20px 12px; }
+  .foto-perfil { width: 110px; height: 110px; }
+  .cuenta-titulo { font-size: 1.8rem; }
+}
