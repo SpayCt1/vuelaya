@@ -5,7 +5,7 @@ import Presentation from "./pages/presentation/presentation";
 import Login from "./pages/login/login";
 import Navbar from "./components/navbar";
 import Home from "./pages/home/home";
-import Destinos from "./pages/destinos/destinos";
+import Vuelos from "./pages/destinos/destinos";
 import Contacto from "./pages/contacto/contacto";
 import Cuenta from "./pages/cuenta/cuenta";
 
@@ -24,7 +24,8 @@ function AppWrapper() {
         <Route path="/" element={<Presentation />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/destinos" element={<Destinos />} />
+        {/* Cambiamos "/destinos" a "/vuelos" */}
+        <Route path="/vuelos" element={<Vuelos />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cuenta" element={<Cuenta />} />
       </Routes>
