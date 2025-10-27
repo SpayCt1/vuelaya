@@ -8,7 +8,7 @@ function Navbar() {
       <div className="logo">VuelaYa</div>
       <ul className="nav-links">
         <li><Link to="/home">Inicio</Link></li>
-        <li><Link to="/destinos">Destinos</Link></li>
+        <li><Link to="/vuelos">Vuelos</Link></li>
         <li><Link to="/contacto">Contacto</Link></li>
         <li><Link to="/cuenta">Cuenta</Link></li>
       </ul>

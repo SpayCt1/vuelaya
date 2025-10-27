@@ -1,0 +1,117 @@
+.vuelos-container {
+  padding: 32px;
+}
+
+.vuelos-container h1 {
+  text-align: center;
+  color: #00bfa5;
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+/* Grid de tarjetas */
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);/* Adaptable a cualquier pantalla */
+  column-gap: 12px; /* separación horizontal */
+  row-gap: 40px;  
+}
+
+/* Tarjeta individual */
+.tarjeta {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Ocupa todo el ancho de su columna */
+  max-width: 400px; /* Mantiene tamaño máximo */
+  margin: 0 auto; /* Centra tarjetas cuando hay espacio extra */
+}
+
+.tarjeta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Imagen */
+.tarjeta img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Contenido */
+.tarjeta .contenido {
+  padding: 16px;
+}
+
+.tarjeta h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.tarjeta p {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 4px 0;
+}
+
+/* Botón */
+.tarjeta button {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px 0;
+  background-color: black;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tarjeta button:hover {
+  background-color: #008e76;
+}
+
+/* Responsive: 2 tarjetas por fila en pantallas medianas */
+@media (max-width: 900px) {
+  .tarjetas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: 1 tarjeta por fila en pantallas pequeñas */
+@media (max-width: 600px) {
+  .tarjetas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Botón de limpiar filtros */
+.clear-btn {
+  background-color: black;
+  color:aliceblue;
+  margin: 12px 0 24px 0; /* un poco de espacio debajo y arriba */
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.clear-btn:hover {
+  background-color: #008e76;
+}
+
+/* Contenedor flex para título y botón */
+.header-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px; /* separación debajo */
+}
