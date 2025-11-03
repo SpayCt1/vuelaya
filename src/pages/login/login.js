@@ -1,37 +1,96 @@
 import React, { useState } from "react";
 import "./login.css";
-import usersMock from "../../assets/mockups/users"; 
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-
-  const [isRegister, setIsRegister] = useState(true); 
-  const [formData, setFormData] = useState({ nombre: "", correo: "", contraseña: "" });
+  const [isRegister, setIsRegister] = useState(true);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    correo: "",
+    contraseña: "",
+    telefono: "",
+    direccion: "",
+  });
   const [message, setMessage] = useState("");
-  
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (isRegister) {
-      if (!formData.nombre || !formData.correo || !formData.contraseña) {
+      // Registro
+      if (
+        !formData.nombre ||
+        !formData.correo ||
+        !formData.contraseña ||
+        !formData.telefono ||
+        !formData.direccion
+      ) {
         setMessage("Todos los campos son obligatorios");
         return;
       }
-      setMessage(`Usuario ${formData.nombre} registrado correctamente`);
-    } else {
-      const userFound = usersMock.find(
-        (user) => user.correo === formData.correo && user.contraseña === formData.contraseña
-      );
-      if (userFound) {
-        setMessage(`Bienvenido ${userFound.nombre} (mockup)`);
-        navigate("/home");
 
-      } else {
-        setMessage("Usuario o contraseña incorrectos");
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: formData.nombre,
+            email: formData.correo,
+            password: formData.contraseña,
+            telefono: formData.telefono,
+            direccion: formData.direccion,
+          }),
+        });
+
+        const data = await res.json();
+        console.log("Respuesta registro:", data);
+
+        if (res.ok) {
+          setMessage(`Usuario ${formData.nombre} registrado correctamente`);
+          setIsRegister(false);
+        } else {
+          setMessage(data.msg || "Error al registrar");
+        }
+      } catch (err) {
+        console.error("Error de registro:", err);
+        setMessage("Error del servidor");
+      }
+    } else {
+      // Login
+      if (!formData.correo || !formData.contraseña) {
+        setMessage("Correo y contraseña obligatorios");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.correo,
+            password: formData.contraseña,
+          }),
+        });
+
+        const data = await res.json();
+        console.log("Respuesta login:", data);
+
+        if (res.ok) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("usuario", JSON.stringify(data.user));
+          setMessage(`Bienvenido ${data.user.username}`);
+          navigate("/home");
+        } else {
+          setMessage(data.msg || "Error al iniciar sesión");
+        }
+      } catch (err) {
+        console.error("Error de login:", err);
+        setMessage("Error del servidor");
       }
     }
   };
@@ -57,6 +116,24 @@ function Login() {
             value={formData.correo}
             onChange={handleChange}
           />
+          {isRegister && (
+            <>
+              <input
+                type="text"
+                name="telefono"
+                placeholder="Teléfono"
+                value={formData.telefono || ""}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="direccion"
+                placeholder="Dirección"
+                value={formData.direccion || ""}
+                onChange={handleChange}
+              />
+            </>
+          )}
           <input
             type="password"
             name="contraseña"
@@ -66,8 +143,16 @@ function Login() {
           />
           <button type="submit">{isRegister ? "Registrarse" : "Iniciar Sesión"}</button>
         </form>
-        <p className="toggle-link" onClick={() => { setIsRegister(!isRegister); setMessage(""); }}>
-          {isRegister ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate"}
+        <p
+          className="toggle-link"
+          onClick={() => {
+            setIsRegister(!isRegister);
+            setMessage("");
+          }}
+        >
+          {isRegister
+            ? "¿Ya tienes cuenta? Inicia sesión"
+            : "¿No tienes cuenta? Regístrate"}
         </p>
         {message && <p className="message">{message}</p>}
       </div>
