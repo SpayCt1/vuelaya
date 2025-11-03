@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./login.css";
-import usersMock from "../../assets/mockups/users"; // tu mockup de usuarios
+import usersMock from "../../assets/mockups/users"; 
 import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const [isRegister, setIsRegister] = useState(true); // true = registro, false = login
+  const [isRegister, setIsRegister] = useState(true); 
   const [formData, setFormData] = useState({ nombre: "", correo: "", contraseña: "" });
   const [message, setMessage] = useState("");
   
@@ -17,14 +17,12 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isRegister) {
-      // Validación básica de registro
       if (!formData.nombre || !formData.correo || !formData.contraseña) {
         setMessage("Todos los campos son obligatorios");
         return;
       }
-      setMessage(`Usuario ${formData.nombre} registrado correctamente (mockup)`);
+      setMessage(`Usuario ${formData.nombre} registrado correctamente`);
     } else {
-      // Validación básica de login
       const userFound = usersMock.find(
         (user) => user.correo === formData.correo && user.contraseña === formData.contraseña
       );

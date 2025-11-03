@@ -7,8 +7,8 @@ const Cuenta = () => {
   const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
 
   const usuario = {
-    nombre: "Antonio Pérez",
-    correo: "antonio@example.com",
+    nombre: "Juan Pérez",
+    correo: "Juan@email.com",
     telefono: "+52 123 456 7890",
     direccion: "Calle Principal 123, Ciudad de México",
     foto: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
